@@ -69,9 +69,7 @@ postman-api = "0.1.0"
 ```
 
 
-# [Documentation]
-
-
+# Documentation
 
 * [Client Library Documentation](https://docs.rs/postman-api)
 
