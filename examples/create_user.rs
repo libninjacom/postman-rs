@@ -1,5 +1,5 @@
-use postman_api::PostmanClient;
-use postman_api::model::*;
+use postman2::PostmanClient;
+use postman2::model::*;
 #[tokio::main]
 async fn main() {
     let client = PostmanClient::from_env();

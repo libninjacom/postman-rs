@@ -9,34 +9,33 @@ use crate::model::*;
 
 pub struct PostmanClient {
     pub(crate) client: httpclient::Client,
-    authentication: Option<PostmanAuthentication>,
+    authentication: PostmanAuthentication,
 }
 impl PostmanClient {
     pub fn from_env() -> Self {
-        let url = std::env::var("POSTMAN_BASE_URL")
-            .expect("Missing environment variable POSTMAN_BASE_URL");
-        Self::new(&url)
+        let url = "https://api.getpostman.com".to_string();
+        Self {
+            client: httpclient::Client::new(Some(url)),
+            authentication: PostmanAuthentication::from_env(),
+        }
     }
 }
 impl PostmanClient {
-    pub fn new(url: &str) -> Self {
+    pub fn new(url: &str, authentication: PostmanAuthentication) -> Self {
         let client = httpclient::Client::new(Some(url.to_string()));
-        let authentication = None;
         Self { client, authentication }
     }
     pub fn with_authentication(mut self, authentication: PostmanAuthentication) -> Self {
-        self.authentication = Some(authentication);
+        self.authentication = authentication;
         self
     }
     pub fn authenticate<'a>(
         &self,
         mut r: httpclient::RequestBuilder<'a>,
     ) -> httpclient::RequestBuilder<'a> {
-        if let Some(ref authentication) = self.authentication {
-            match authentication {
-                PostmanAuthentication::PostmanApiKey { postman_api_key } => {
-                    r = r.header("x-api-key", postman_api_key);
-                }
+        match &self.authentication {
+            PostmanAuthentication::PostmanApiKey { postman_api_key } => {
+                r = r.header("x-api-key", postman_api_key);
             }
         }
         r
