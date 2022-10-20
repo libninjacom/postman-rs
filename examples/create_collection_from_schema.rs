@@ -6,11 +6,11 @@ use postman::request::CreateCollectionFromSchemaRequired;
 async fn main() {
     let client = PostmanClient::from_env();
     let args = CreateCollectionFromSchemaRequired {
-        api_id: "your api id",
-        schema_id: "your schema id",
-        relations: vec![::serde_json::json!({})],
         name: "your name",
+        relations: vec![::serde_json::json!({})],
+        api_id: "your api id",
         api_version_id: "your api version id",
+        schema_id: "your schema id",
     };
     let response = client
         .create_collection_from_schema(args)

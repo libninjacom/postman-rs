@@ -1,14 +1,11 @@
 <div id="top"></div>
 
 <p align="center">
-    <a href="https://github.com/libninjacom/postman-rs/graphs/contributors">
-        <img src="https://img.shields.io/github/contributors/libninjacom/postman-rs.svg?style=flat-square" alt="GitHub Contributors" />
-    </a>
     <a href="https://github.com/libninjacom/postman-rs/stargazers">
         <img src="https://img.shields.io/github/stars/libninjacom/postman-rs.svg?style=flat-square" alt="Stars" />
     </a>
     <a href="https://github.com/libninjacom/postman-rs/actions">
-        <img src="https://img.shields.io/github/workflow/status/libninjacom/postman-rs/test?style=flat-square" alt="Build Status" />
+        <img src="https://img.shields.io/github/workflow/status/libninjacom/postman-rs/ci?style=flat-square" alt="Build Status" />
     </a>
     
 <a href="https://crates.io/crates/postman">
@@ -69,6 +66,8 @@ postman = "1.0.0"
 
 # Documentation
 
+
+* [API Documentation](https://www.postman.com/postman/workspace/postman-public-workspace/documentation/12959542-c8142d51-e97c-46b6-bd77-52bb66712c9a)
 
 
 * [Client Library Documentation](https://docs.rs/postman)
