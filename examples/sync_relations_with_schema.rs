@@ -1,7 +1,7 @@
 #![allow(unused_imports)]
-use postman::PostmanClient;
-use postman::model::*;
-use postman::request::SyncRelationsWithSchemaRequired;
+use postman2::PostmanClient;
+use postman2::model::*;
+use postman2::request::SyncRelationsWithSchemaRequired;
 #[tokio::main]
 async fn main() {
     let client = PostmanClient::from_env();

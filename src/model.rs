@@ -1,30 +1,5 @@
 use serde::{Serialize, Deserialize};
 #[derive(Debug, Serialize, Deserialize, Default)]
-pub struct ImportExportFile {
-    ///The `file` type value.
-    pub type_: String,
-    ///A file containing a valid user's export .zip file.
-    pub input: String,
-}
-impl std::fmt::Display for ImportExportFile {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
-        write!(f, "{}", serde_json::to_string(self).unwrap())
-    }
-}
-#[derive(Debug, Serialize, Deserialize, Default)]
-pub struct CreateCollectionFromSchemaRequired {
-    pub name: String,
-    pub relations: Vec<serde_json::Value>,
-    pub api_id: String,
-    pub api_version_id: String,
-    pub schema_id: String,
-}
-impl std::fmt::Display for CreateCollectionFromSchemaRequired {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
-        write!(f, "{}", serde_json::to_string(self).unwrap())
-    }
-}
-#[derive(Debug, Serialize, Deserialize, Default)]
 pub struct JsonStringified {
     ///The OpenAPI definition type.
     pub type_: Option<String>,
@@ -48,23 +23,48 @@ impl std::fmt::Display for JsonSchema {
         write!(f, "{}", serde_json::to_string(self).unwrap())
     }
 }
+#[derive(Debug, Serialize, Deserialize, Default)]
+pub struct CreateCollectionFromSchemaRequired {
+    pub api_id: String,
+    pub name: String,
+    pub relations: Vec<serde_json::Value>,
+    pub schema_id: String,
+    pub api_version_id: String,
+}
+impl std::fmt::Display for CreateCollectionFromSchemaRequired {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
+        write!(f, "{}", serde_json::to_string(self).unwrap())
+    }
+}
 #[derive(Debug, Serialize, Deserialize)]
 pub struct ScimUserResource {
-    ///Information about the Postman team member.
-    pub name: Option<serde_json::Value>,
-    ///If true, the team member is active.
-    pub active: Option<bool>,
-    ///The team member's SCIM username.
-    pub user_name: Option<String>,
     ///A list of schema resource URIs.
     pub schemas: Option<Vec<String>>,
-    ///The team member's SCIM ID.
-    pub id: Option<String>,
+    ///If true, the team member is active.
+    pub active: Option<bool>,
     ///The team member's external ID.
     pub external_id: Option<String>,
     pub meta: Option<serde_json::Value>,
+    ///The team member's SCIM ID.
+    pub id: Option<String>,
+    ///Information about the Postman team member.
+    pub name: Option<serde_json::Value>,
+    ///The team member's SCIM username.
+    pub user_name: Option<String>,
 }
 impl std::fmt::Display for ScimUserResource {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
+        write!(f, "{}", serde_json::to_string(self).unwrap())
+    }
+}
+#[derive(Debug, Serialize, Deserialize, Default)]
+pub struct ImportExportFile {
+    ///The `file` type value.
+    pub type_: String,
+    ///A file containing a valid user's export .zip file.
+    pub input: String,
+}
+impl std::fmt::Display for ImportExportFile {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> Result<(), std::fmt::Error> {
         write!(f, "{}", serde_json::to_string(self).unwrap())
     }
