@@ -52,7 +52,7 @@ impl PostmanClient {
 Gets information about all APIs.*/
     pub fn get_all_apis(&self) -> request::GetAllApisRequest {
         request::GetAllApisRequest {
-            client: &self,
+            http_client: &self,
             workspace: None,
             since: None,
             until: None,
@@ -71,7 +71,7 @@ Gets information about all APIs.*/
 Creates an API.*/
     pub fn create_api(&self) -> request::CreateApiRequest {
         request::CreateApiRequest {
-            client: &self,
+            http_client: &self,
             workspace_id: None,
             api: None,
         }
@@ -81,7 +81,7 @@ Creates an API.*/
 Gets information about an API.*/
     pub fn single_api(&self, api_id: &str) -> request::SingleApiRequest {
         request::SingleApiRequest {
-            client: &self,
+            http_client: &self,
             api_id: api_id.to_owned(),
         }
     }
@@ -90,7 +90,7 @@ Gets information about an API.*/
 Updates an API.*/
     pub fn update_an_api(&self, api_id: &str) -> request::UpdateAnApiRequest {
         request::UpdateAnApiRequest {
-            client: &self,
+            http_client: &self,
             api_id: api_id.to_owned(),
             api: None,
         }
@@ -100,7 +100,7 @@ Updates an API.*/
 Deletes an API.*/
     pub fn delete_an_api(&self, api_id: &str) -> request::DeleteAnApiRequest {
         request::DeleteAnApiRequest {
-            client: &self,
+            http_client: &self,
             api_id: api_id.to_owned(),
         }
     }
@@ -112,7 +112,7 @@ Gets information about an API's versions.*/
         api_id: &str,
     ) -> request::GetAllApiVersionsRequest {
         request::GetAllApiVersionsRequest {
-            client: &self,
+            http_client: &self,
             api_id: api_id.to_owned(),
         }
     }
@@ -121,7 +121,7 @@ Gets information about an API's versions.*/
 Creates a new API version.*/
     pub fn create_api_version(&self, api_id: &str) -> request::CreateApiVersionRequest {
         request::CreateApiVersionRequest {
-            client: &self,
+            http_client: &self,
             api_id: api_id.to_owned(),
             version: None,
         }
@@ -135,7 +135,7 @@ Gets information about an API version.*/
         api_version_id: &str,
     ) -> request::GetAnApiVersionRequest {
         request::GetAnApiVersionRequest {
-            client: &self,
+            http_client: &self,
             api_id: api_id.to_owned(),
             api_version_id: api_version_id.to_owned(),
         }
@@ -149,7 +149,7 @@ Updates an API version.*/
         api_version_id: &str,
     ) -> request::UpdateAnApiVersionRequest {
         request::UpdateAnApiVersionRequest {
-            client: &self,
+            http_client: &self,
             api_id: api_id.to_owned(),
             api_version_id: api_version_id.to_owned(),
             version: None,
@@ -164,7 +164,7 @@ Deletes an API version.*/
         api_version_id: &str,
     ) -> request::DeleteAnApiVersionRequest {
         request::DeleteAnApiVersionRequest {
-            client: &self,
+            http_client: &self,
             api_id: api_id.to_owned(),
             api_version_id: api_version_id.to_owned(),
         }
@@ -178,7 +178,7 @@ This endpoint is **deprecated**. Use the `/apis/{apiId}/versions/{apiVersionId}/
         api_version_id: &str,
     ) -> request::GetContractTestRelationsRequest {
         request::GetContractTestRelationsRequest {
-            client: &self,
+            http_client: &self,
             api_id: api_id.to_owned(),
             api_version_id: api_version_id.to_owned(),
         }
@@ -192,7 +192,7 @@ Gets an API version's documentation relations.*/
         api_version_id: &str,
     ) -> request::GetDocumentationRelationsRequest {
         request::GetDocumentationRelationsRequest {
-            client: &self,
+            http_client: &self,
             api_id: api_id.to_owned(),
             api_version_id: api_version_id.to_owned(),
         }
@@ -206,7 +206,7 @@ Gets an API version's environment relations.*/
         api_version_id: &str,
     ) -> request::GetEnvironmentRelationsRequest {
         request::GetEnvironmentRelationsRequest {
-            client: &self,
+            http_client: &self,
             api_id: api_id.to_owned(),
             api_version_id: api_version_id.to_owned(),
         }
@@ -220,7 +220,7 @@ This endpoint is **deprecated**. Use the `/apis/{apiId}/versions/{apiVersionId}/
         api_version_id: &str,
     ) -> request::GetIntegrationTestRelationsRequest {
         request::GetIntegrationTestRelationsRequest {
-            client: &self,
+            http_client: &self,
             api_id: api_id.to_owned(),
             api_version_id: api_version_id.to_owned(),
         }
@@ -234,7 +234,7 @@ Gets an API version's mock server relations.*/
         api_version_id: &str,
     ) -> request::GetMockServerRelationsRequest {
         request::GetMockServerRelationsRequest {
-            client: &self,
+            http_client: &self,
             api_id: api_id.to_owned(),
             api_version_id: api_version_id.to_owned(),
         }
@@ -248,7 +248,7 @@ Gets an API version's monitor relations.*/
         api_version_id: &str,
     ) -> request::GetMonitorRelationsRequest {
         request::GetMonitorRelationsRequest {
-            client: &self,
+            http_client: &self,
             api_id: api_id.to_owned(),
             api_version_id: api_version_id.to_owned(),
         }
@@ -262,7 +262,7 @@ Gets all of an API version's relations.*/
         api_version_id: &str,
     ) -> request::GetLinkedRelationsRequest {
         request::GetLinkedRelationsRequest {
-            client: &self,
+            http_client: &self,
             api_id: api_id.to_owned(),
             api_version_id: api_version_id.to_owned(),
         }
@@ -276,7 +276,7 @@ Creates a new relation for an API version. This endpoint accepts multiple relati
         api_version_id: &str,
     ) -> request::CreateRelationsRequest {
         request::CreateRelationsRequest {
-            client: &self,
+            http_client: &self,
             api_id: api_id.to_owned(),
             api_version_id: api_version_id.to_owned(),
             documentation: None,
@@ -297,7 +297,7 @@ Creates an API definition.*/
         api_version_id: &str,
     ) -> request::CreateSchemaRequest {
         request::CreateSchemaRequest {
-            client: &self,
+            http_client: &self,
             api_id: api_id.to_owned(),
             api_version_id: api_version_id.to_owned(),
             schema: None,
@@ -313,7 +313,7 @@ Gets information about an API's definition.*/
         schema_id: &str,
     ) -> request::GetSchemaRequest {
         request::GetSchemaRequest {
-            client: &self,
+            http_client: &self,
             api_id: api_id.to_owned(),
             api_version_id: api_version_id.to_owned(),
             schema_id: schema_id.to_owned(),
@@ -329,7 +329,7 @@ Updates an API definition.*/
         schema_id: &str,
     ) -> request::UpdateSchemaRequest {
         request::UpdateSchemaRequest {
-            client: &self,
+            http_client: &self,
             api_id: api_id.to_owned(),
             api_version_id: api_version_id.to_owned(),
             schema_id: schema_id.to_owned(),
@@ -344,7 +344,7 @@ Creates a collection and links it to an API as one or multiple relations.*/
         args: request::CreateCollectionFromSchemaRequired,
     ) -> request::CreateCollectionFromSchemaRequest {
         request::CreateCollectionFromSchemaRequest {
-            client: &self,
+            http_client: &self,
             api_id: args.api_id.to_owned(),
             api_version_id: args.api_version_id.to_owned(),
             schema_id: args.schema_id.to_owned(),
@@ -362,7 +362,7 @@ Gets all of an API version's test relations.*/
         api_version_id: &str,
     ) -> request::GetTestRelationsRequest {
         request::GetTestRelationsRequest {
-            client: &self,
+            http_client: &self,
             api_id: api_id.to_owned(),
             api_version_id: api_version_id.to_owned(),
         }
@@ -376,7 +376,7 @@ This endpoint is **deprecated**. Use the `/apis/{apiId}/versions/{apiVersionId}/
         api_version_id: &str,
     ) -> request::GetTestSuiteRelationsRequest {
         request::GetTestSuiteRelationsRequest {
-            client: &self,
+            http_client: &self,
             api_id: api_id.to_owned(),
             api_version_id: api_version_id.to_owned(),
         }
@@ -389,7 +389,7 @@ Syncs an API version's relation with the API's definition.*/
         args: request::SyncRelationsWithSchemaRequired,
     ) -> request::SyncRelationsWithSchemaRequest {
         request::SyncRelationsWithSchemaRequest {
-            client: &self,
+            http_client: &self,
             api_id: args.api_id.to_owned(),
             api_version_id: args.api_version_id.to_owned(),
             relation_type: args.relation_type.to_owned(),
@@ -401,7 +401,7 @@ Syncs an API version's relation with the API's definition.*/
 Gets all of your [collections](https://www.getpostman.com/docs/collections). The response includes all of your subscribed collections.*/
     pub fn all_collections(&self) -> request::AllCollectionsRequest {
         request::AllCollectionsRequest {
-            client: &self,
+            http_client: &self,
             workspace_id: None,
         }
     }
@@ -418,7 +418,7 @@ Creates a collection using the [Postman Collection v2 schema format](https://sch
 */
     pub fn create_collection(&self) -> request::CreateCollectionRequest {
         request::CreateCollectionRequest {
-            client: &self,
+            http_client: &self,
             workspace_id: None,
             collection: None,
         }
@@ -432,7 +432,7 @@ Creates a [fork](https://learning.postman.com/docs/collaborating-in-postman/vers
         collection_uid: &str,
     ) -> request::CreateAForkRequest {
         request::CreateAForkRequest {
-            client: &self,
+            http_client: &self,
             workspace: workspace.to_owned(),
             collection_uid: collection_uid.to_owned(),
             label: None,
@@ -443,7 +443,7 @@ Creates a [fork](https://learning.postman.com/docs/collaborating-in-postman/vers
 Merges a forked collection back into its destination collection.*/
     pub fn merge_a_fork(&self) -> request::MergeAForkRequest {
         request::MergeAForkRequest {
-            client: &self,
+            http_client: &self,
             destination: None,
             source: None,
             strategy: None,
@@ -457,7 +457,7 @@ Gets information about a collection. For a complete list of this endpoint's poss
         collection_uid: &str,
     ) -> request::SingleCollectionRequest {
         request::SingleCollectionRequest {
-            client: &self,
+            http_client: &self,
             collection_uid: collection_uid.to_owned(),
         }
     }
@@ -479,7 +479,7 @@ Updates a collection using the [Postman Collection v2 schema format](https://sch
         collection_uid: &str,
     ) -> request::UpdateCollectionRequest {
         request::UpdateCollectionRequest {
-            client: &self,
+            http_client: &self,
             collection_uid: collection_uid.to_owned(),
             collection: None,
         }
@@ -492,7 +492,7 @@ Deletes a collection.*/
         collection_uid: &str,
     ) -> request::DeleteCollectionRequest {
         request::DeleteCollectionRequest {
-            client: &self,
+            http_client: &self,
             collection_uid: collection_uid.to_owned(),
         }
     }
@@ -501,7 +501,7 @@ Deletes a collection.*/
 Gets information about all of your [environments](https://learning.postman.com/docs/sending-requests/managing-environments/).*/
     pub fn all_environments(&self) -> request::AllEnvironmentsRequest {
         request::AllEnvironmentsRequest {
-            client: &self,
+            http_client: &self,
             workspace_id: None,
         }
     }
@@ -510,7 +510,7 @@ Gets information about all of your [environments](https://learning.postman.com/d
 Creates an environment.*/
     pub fn create_environment(&self) -> request::CreateEnvironmentRequest {
         request::CreateEnvironmentRequest {
-            client: &self,
+            http_client: &self,
             workspace_id: None,
             environment: None,
         }
@@ -523,7 +523,7 @@ Gets information about an environment.*/
         environment_uid: &str,
     ) -> request::SingleEnvironmentRequest {
         request::SingleEnvironmentRequest {
-            client: &self,
+            http_client: &self,
             environment_uid: environment_uid.to_owned(),
         }
     }
@@ -535,7 +535,7 @@ Updates an environment.*/
         environment_uid: &str,
     ) -> request::UpdateEnvironmentRequest {
         request::UpdateEnvironmentRequest {
-            client: &self,
+            http_client: &self,
             environment_uid: environment_uid.to_owned(),
             environment: None,
         }
@@ -548,7 +548,7 @@ Deletes an environment.*/
         environment_uid: &str,
     ) -> request::DeleteEnvironmentRequest {
         request::DeleteEnvironmentRequest {
-            client: &self,
+            http_client: &self,
             environment_uid: environment_uid.to_owned(),
         }
     }
@@ -562,7 +562,7 @@ For more information, read our [Exporting data dumps](https://learning.postman.c
 */
     pub fn import_exported_data(&self) -> request::ImportExportedDataRequest {
         request::ImportExportedDataRequest {
-            client: &self,
+            http_client: &self,
         }
     }
     /**Import an OpenAPI definition
@@ -573,7 +573,7 @@ Imports an OpenAPI definition into Postman as a new [Postman Collection](https:/
         body: serde_json::Value,
     ) -> request::ImportExternalApiSpecificationRequest {
         request::ImportExternalApiSpecificationRequest {
-            client: &self,
+            http_client: &self,
             workspace_id: None,
             body,
         }
@@ -583,7 +583,7 @@ Imports an OpenAPI definition into Postman as a new [Postman Collection](https:/
 Gets information about the authenticated user.*/
     pub fn api_key_owner(&self) -> request::ApiKeyOwnerRequest {
         request::ApiKeyOwnerRequest {
-            client: &self,
+            http_client: &self,
         }
     }
     /**Get all mock servers
@@ -591,7 +591,7 @@ Gets information about the authenticated user.*/
 Gets all mock servers.*/
     pub fn all_mocks(&self) -> request::AllMocksRequest {
         request::AllMocksRequest {
-            client: &self,
+            http_client: &self,
         }
     }
     /**Create a mock server
@@ -599,7 +599,7 @@ Gets all mock servers.*/
 Creates a mock server in a collection.*/
     pub fn create_mock(&self) -> request::CreateMockRequest {
         request::CreateMockRequest {
-            client: &self,
+            http_client: &self,
             workspace_id: None,
             mock: None,
         }
@@ -609,7 +609,7 @@ Creates a mock server in a collection.*/
 Gets information about a mock server.*/
     pub fn single_mock(&self, mock_uid: &str) -> request::SingleMockRequest {
         request::SingleMockRequest {
-            client: &self,
+            http_client: &self,
             mock_uid: mock_uid.to_owned(),
         }
     }
@@ -618,7 +618,7 @@ Gets information about a mock server.*/
 Updates a mock server.*/
     pub fn update_mock(&self, mock_uid: &str) -> request::UpdateMockRequest {
         request::UpdateMockRequest {
-            client: &self,
+            http_client: &self,
             mock_uid: mock_uid.to_owned(),
             mock: None,
         }
@@ -628,7 +628,7 @@ Updates a mock server.*/
 Deletes a mock server.*/
     pub fn delete_mock(&self, mock_uid: &str) -> request::DeleteMockRequest {
         request::DeleteMockRequest {
-            client: &self,
+            http_client: &self,
             mock_uid: mock_uid.to_owned(),
         }
     }
@@ -637,7 +637,7 @@ Deletes a mock server.*/
 Publishes a mock server. Publishing a mock server sets its **Access Control** configuration setting to public.*/
     pub fn publish_mock(&self, mock_uid: &str) -> request::PublishMockRequest {
         request::PublishMockRequest {
-            client: &self,
+            http_client: &self,
             mock_uid: mock_uid.to_owned(),
         }
     }
@@ -646,7 +646,7 @@ Publishes a mock server. Publishing a mock server sets its **Access Control** co
 Unpublishes a mock server. Unpublishing a mock server sets its **Access Control** configuration setting to private.*/
     pub fn unpublish_mock(&self, mock_uid: &str) -> request::UnpublishMockRequest {
         request::UnpublishMockRequest {
-            client: &self,
+            http_client: &self,
             mock_uid: mock_uid.to_owned(),
         }
     }
@@ -655,7 +655,7 @@ Unpublishes a mock server. Unpublishing a mock server sets its **Access Control*
 Gets all monitors.*/
     pub fn all_monitors(&self) -> request::AllMonitorsRequest {
         request::AllMonitorsRequest {
-            client: &self,
+            http_client: &self,
         }
     }
     /**Create a monitor
@@ -663,7 +663,7 @@ Gets all monitors.*/
 Creates a monitor.*/
     pub fn create_monitor(&self) -> request::CreateMonitorRequest {
         request::CreateMonitorRequest {
-            client: &self,
+            http_client: &self,
             workspace_id: None,
             monitor: None,
         }
@@ -673,7 +673,7 @@ Creates a monitor.*/
 Gets information about a monitor.*/
     pub fn single_monitor(&self, monitor_uid: &str) -> request::SingleMonitorRequest {
         request::SingleMonitorRequest {
-            client: &self,
+            http_client: &self,
             monitor_uid: monitor_uid.to_owned(),
         }
     }
@@ -682,7 +682,7 @@ Gets information about a monitor.*/
 Updates a monitor.*/
     pub fn update_monitor(&self, monitor_uid: &str) -> request::UpdateMonitorRequest {
         request::UpdateMonitorRequest {
-            client: &self,
+            http_client: &self,
             monitor_uid: monitor_uid.to_owned(),
             monitor: None,
         }
@@ -692,7 +692,7 @@ Updates a monitor.*/
 Deletes a monitor.*/
     pub fn delete_monitor(&self, monitor_uid: &str) -> request::DeleteMonitorRequest {
         request::DeleteMonitorRequest {
-            client: &self,
+            http_client: &self,
             monitor_uid: monitor_uid.to_owned(),
         }
     }
@@ -701,7 +701,7 @@ Deletes a monitor.*/
 Runs a monitor and returns its run results.*/
     pub fn run_a_monitor(&self, monitor_uid: &str) -> request::RunAMonitorRequest {
         request::RunAMonitorRequest {
-            client: &self,
+            http_client: &self,
             monitor_uid: monitor_uid.to_owned(),
         }
     }
@@ -710,7 +710,7 @@ Runs a monitor and returns its run results.*/
 Gets all the resource types supported by Postman's SCIM API.*/
     pub fn get_resource_types(&self) -> request::GetResourceTypesRequest {
         request::GetResourceTypesRequest {
-            client: &self,
+            http_client: &self,
         }
     }
     /**Get service provider configuration
@@ -718,7 +718,7 @@ Gets all the resource types supported by Postman's SCIM API.*/
 Gets the Postman SCIM API configuration information. This includes a list of supported operations.*/
     pub fn service_provider_config(&self) -> request::ServiceProviderConfigRequest {
         request::ServiceProviderConfigRequest {
-            client: &self,
+            http_client: &self,
         }
     }
     /**Get all user resources
@@ -726,7 +726,7 @@ Gets the Postman SCIM API configuration information. This includes a list of sup
 Gets information about all Postman team members.*/
     pub fn fetch_all_user_resource(&self) -> request::FetchAllUserResourceRequest {
         request::FetchAllUserResourceRequest {
-            client: &self,
+            http_client: &self,
             start_index: None,
             count: None,
             filter: None,
@@ -742,7 +742,7 @@ By default, the system assigns new users the developer role. You can [update use
 */
     pub fn create_user(&self) -> request::CreateUserRequest {
         request::CreateUserRequest {
-            client: &self,
+            http_client: &self,
             schemas: None,
             user_name: None,
             active: None,
@@ -760,7 +760,7 @@ Gets information about a Postman team member.*/
         user_id: &str,
     ) -> request::FetchUserResourceRequest {
         request::FetchUserResourceRequest {
-            client: &self,
+            http_client: &self,
             user_id: user_id.to_owned(),
         }
     }
@@ -777,7 +777,7 @@ You can only use the SCIM API to update a user's first and last name. You cannot
         user_id: &str,
     ) -> request::UpdateUserInformationRequest {
         request::UpdateUserInformationRequest {
-            client: &self,
+            http_client: &self,
             user_id: user_id.to_owned(),
             schemas: None,
             name: None,
@@ -793,7 +793,7 @@ By setting the `active` property from `false` to `true`, this reactivates an acc
 */
     pub fn update_user_state(&self, user_id: &str) -> request::UpdateUserStateRequest {
         request::UpdateUserStateRequest {
-            client: &self,
+            http_client: &self,
             user_id: user_id.to_owned(),
             schemas: None,
             operations: None,
@@ -813,7 +813,7 @@ The maximum allowed size of the definition is 10 MB.
         &self,
     ) -> request::SchemaSecurityValidationRequest {
         request::SchemaSecurityValidationRequest {
-            client: &self,
+            http_client: &self,
             schema: None,
         }
     }
@@ -822,7 +822,7 @@ The maximum allowed size of the definition is 10 MB.
 Creates a webhook that triggers a collection with a custom payload. You can get the webhook's URL from the `webhookUrl` property in the endpoint's response.*/
     pub fn create_webhook(&self) -> request::CreateWebhookRequest {
         request::CreateWebhookRequest {
-            client: &self,
+            http_client: &self,
             workspace_id: None,
             webhook: None,
         }
@@ -843,7 +843,7 @@ This endpoint's response contains the visibility field. Visibility determines wh
 */
     pub fn all_workspaces(&self) -> request::AllWorkspacesRequest {
         request::AllWorkspacesRequest {
-            client: &self,
+            http_client: &self,
             type_: None,
         }
     }
@@ -863,7 +863,7 @@ If you have a linked collection or environment, note the following:
 */
     pub fn create_workspace(&self) -> request::CreateWorkspaceRequest {
         request::CreateWorkspaceRequest {
-            client: &self,
+            http_client: &self,
             workspace: None,
         }
     }
@@ -886,7 +886,7 @@ This endpoint's response contains the `visibility` field. [Visibility](https://l
         workspace_id: &str,
     ) -> request::SingleWorkspaceRequest {
         request::SingleWorkspaceRequest {
-            client: &self,
+            http_client: &self,
             workspace_id: workspace_id.to_owned(),
         }
     }
@@ -913,7 +913,7 @@ If you have a linked collection or environment, note the following:
         workspace_id: &str,
     ) -> request::UpdateWorkspaceRequest {
         request::UpdateWorkspaceRequest {
-            client: &self,
+            http_client: &self,
             workspace_id: workspace_id.to_owned(),
             workspace: None,
         }
@@ -931,7 +931,7 @@ If you delete a workspace that has a linked collection or environment with anoth
         workspace_id: &str,
     ) -> request::DeleteWorkspaceRequest {
         request::DeleteWorkspaceRequest {
-            client: &self,
+            http_client: &self,
             workspace_id: workspace_id.to_owned(),
         }
     }

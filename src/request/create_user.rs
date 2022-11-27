@@ -5,7 +5,7 @@ use crate::PostmanClient;
 
 That method takes required values as arguments. Set optional values using builder methods on this struct.*/
 pub struct CreateUserRequest<'a> {
-    pub(crate) client: &'a PostmanClient,
+    pub(crate) http_client: &'a PostmanClient,
     pub schemas: Option<Vec<String>>,
     pub user_name: Option<String>,
     pub active: Option<bool>,
@@ -16,7 +16,7 @@ pub struct CreateUserRequest<'a> {
 }
 impl<'a> CreateUserRequest<'a> {
     pub async fn send(self) -> anyhow::Result<serde_json::Value> {
-        let mut r = self.client.client.post("/scim/v2/Users");
+        let mut r = self.http_client.client.post("/scim/v2/Users");
         if let Some(ref unwrapped) = self.schemas {
             r = r.push_json(json!({ "schemas" : unwrapped }));
         }
@@ -38,7 +38,7 @@ impl<'a> CreateUserRequest<'a> {
         if let Some(ref unwrapped) = self.name {
             r = r.push_json(json!({ "name" : unwrapped }));
         }
-        r = self.client.authenticate(r);
+        r = self.http_client.authenticate(r);
         let res = r.send().await.unwrap().error_for_status();
         match res {
             Ok(res) => res.json().await.map_err(|e| anyhow::anyhow!("{:?}", e)),

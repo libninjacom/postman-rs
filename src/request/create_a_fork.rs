@@ -5,7 +5,7 @@ use crate::PostmanClient;
 
 That method takes required values as arguments. Set optional values using builder methods on this struct.*/
 pub struct CreateAForkRequest<'a> {
-    pub(crate) client: &'a PostmanClient,
+    pub(crate) http_client: &'a PostmanClient,
     pub workspace: String,
     pub collection_uid: String,
     pub label: Option<String>,
@@ -13,7 +13,7 @@ pub struct CreateAForkRequest<'a> {
 impl<'a> CreateAForkRequest<'a> {
     pub async fn send(self) -> anyhow::Result<serde_json::Value> {
         let mut r = self
-            .client
+            .http_client
             .client
             .post(
                 &format!(
@@ -25,7 +25,7 @@ impl<'a> CreateAForkRequest<'a> {
         if let Some(ref unwrapped) = self.label {
             r = r.push_json(json!({ "label" : unwrapped }));
         }
-        r = self.client.authenticate(r);
+        r = self.http_client.authenticate(r);
         let res = r.send().await.unwrap().error_for_status();
         match res {
             Ok(res) => res.json().await.map_err(|e| anyhow::anyhow!("{:?}", e)),

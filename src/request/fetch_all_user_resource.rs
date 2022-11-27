@@ -5,14 +5,14 @@ use crate::PostmanClient;
 
 That method takes required values as arguments. Set optional values using builder methods on this struct.*/
 pub struct FetchAllUserResourceRequest<'a> {
-    pub(crate) client: &'a PostmanClient,
+    pub(crate) http_client: &'a PostmanClient,
     pub start_index: Option<f64>,
     pub count: Option<f64>,
     pub filter: Option<String>,
 }
 impl<'a> FetchAllUserResourceRequest<'a> {
     pub async fn send(self) -> anyhow::Result<serde_json::Value> {
-        let mut r = self.client.client.get("/scim/v2/Users");
+        let mut r = self.http_client.client.get("/scim/v2/Users");
         if let Some(ref unwrapped) = self.start_index {
             r = r.push_query("startIndex", &unwrapped.to_string());
         }
@@ -22,7 +22,7 @@ impl<'a> FetchAllUserResourceRequest<'a> {
         if let Some(ref unwrapped) = self.filter {
             r = r.push_query("filter", &unwrapped.to_string());
         }
-        r = self.client.authenticate(r);
+        r = self.http_client.authenticate(r);
         let res = r.send().await.unwrap().error_for_status();
         match res {
             Ok(res) => res.json().await.map_err(|e| anyhow::anyhow!("{:?}", e)),
